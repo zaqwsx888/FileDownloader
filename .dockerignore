@@ -1,0 +1,17 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.docker
+
+# Python
+file_downloader/__pycache__/
+file_downloader/*/__pycache__/
+file_downloader/*/*/__pycache__/
+file_downloader/*/*/*/__pycache__/
+.venv/
+venv/
+
+# Local PostgreSQL data
+db/
