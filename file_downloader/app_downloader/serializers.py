@@ -5,10 +5,8 @@ from .models import File
 class FilesSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
-        fields = (
-            'id', 'name', 'file', 'size', 'file_extensions', 'time_create'
-        )
-        read_only_fields = ('id', 'size', 'file_extensions')
+        fields = "__all__"
+        read_only_fields = ('id', 'size', 'file_extensions', 'time_create')
 
     def create(self, validated_data):
         return File.objects.create(
