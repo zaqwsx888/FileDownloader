@@ -7,8 +7,10 @@ class FileViewSet(ModelViewSet):
     queryset = File.objects.all()
     serializer_class = FilesSerializer
 
-    def pre_save(self, obj):
-        obj.file = self.request.FILES.get('file')
+    def perform_create(self, serializer):
+        serializer.save()
+    # def pre_save(self, obj):
+    #     obj.file = self.request.FILES.get('file')
 
 
 # from rest_framework import status
