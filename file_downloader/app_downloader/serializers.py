@@ -10,7 +10,8 @@ class FilesSerializer(serializers.ModelSerializer):
         fields = "__all__"
         read_only_fields = ('id', 'size', 'file_extensions', 'time_create')
 
-    def handle_uploaded_file(self, file):
+    @classmethod
+    def handle_uploaded_file(cls, file):
         absolute_file_path = os.path.join(MEDIA_ROOT, 'Files', file.name)
         relative_file_path = os.path.join('Files', file.name)
         with open(absolute_file_path, 'wb+') as destination:
