@@ -32,7 +32,6 @@ class ViewsTest(TestCase):
                 content=open(
                     'app_downloader/tests/test_file.jpg', 'rb').read(),
                 content_type='image/jpeg')
-
         }
         self.assertTrue(File.objects.all().count() == 1)
         response = self.client.post(reverse('file_upload'), data=data)
