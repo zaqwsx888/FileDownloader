@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import File
 from file_downloader.settings import MEDIA_ROOT
+import os
 
 
 class FilesSerializer(serializers.ModelSerializer):
@@ -10,8 +11,8 @@ class FilesSerializer(serializers.ModelSerializer):
         read_only_fields = ('id', 'size', 'file_extensions', 'time_create')
 
     def handle_uploaded_file(self, file):
-        absolute_file_path = '{0}/Files/{1}'.format(MEDIA_ROOT, file.name)
-        relative_file_path = '/Files/{0}'.format(file.name)
+        absolute_file_path = os.path.join(MEDIA_ROOT, 'Files', file.name)
+        relative_file_path = os.path.join('Files', file.name)
         with open(absolute_file_path, 'wb+') as destination:
             for chunk in file.chunks():
                 destination.write(chunk)
